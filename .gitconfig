@@ -1,0 +1,24 @@
+[user]
+	name = Thiago-Assis-T
+	email = thiago.assisfernandes@gmail.com
+[color]
+	ui = auto
+[pull]
+	rebase = true
+[core]
+	editor = nvim
+	fsmonitor = true
+[maintenance]
+	repo = /home/thiago/Desktop/main_projects/rdo
+[maintenance "prefetch"]
+	enabled = true
+[maintenance "commit-graph"]
+	enabled = true
+[maintenance "gc"]
+	enabled = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[fsmonitor]
+	allowRemote = true
