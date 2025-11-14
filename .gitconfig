@@ -10,6 +10,7 @@
 	fsmonitor = true
 [maintenance]
 	repo = /home/thiago/Desktop/main_projects/rdo
+	repo = /home/thiago/.dotfiles
 [maintenance "prefetch"]
 	enabled = true
 [maintenance "commit-graph"]
