@@ -6,8 +6,8 @@ cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f%%", $2}')
 # CPU temperature from k10temp (Ryzen) or fallback
 cpu_temp=$(sensors k10temp-pci-00c3 -u 2>/dev/null | awk '/temp1_input/ {printf "%.0f", $2}')
 if [ -z "$cpu_temp" ]; then
-  if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
-    cpu_temp=$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))
+  if [ -f /sys/class/thermal/thermal_zone2/temp ]; then
+    cpu_temp=$(($(cat /sys/class/thermal/thermal_zone2/temp) / 1000))
   else
     cpu_temp="N/A"
   fi
