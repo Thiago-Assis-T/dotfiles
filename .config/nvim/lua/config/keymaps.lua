@@ -4,7 +4,7 @@ vim.keymap.set("n", "<leader>tn", vim.cmd.tabNext, { silent = true })
 vim.keymap.set("n", "<leader>tb", vim.cmd.tabprevious, { silent = true })
 vim.keymap.set("n", "<leader>tx", vim.cmd.tabclose, { silent = true })
 
--- Telescope Maping:
+-- Telescope Mapping:
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
@@ -23,3 +23,13 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind [W]ord" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind [G]rep" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
+
+-- Autocmd to change windows files to unix files
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "*",
+	callback = function()
+		if vim.bo.fileformat == "dos" then
+			vim.bo.fileformat = "unix"
+		end
+	end,
+})
