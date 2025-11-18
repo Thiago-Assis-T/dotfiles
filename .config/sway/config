@@ -6,7 +6,6 @@
 
 exec --no-startup-id dbus-update-activation-environment --all
 exec gentoo-pipewire-launcher restart &
-exec foot --server &
 #exec $HOME/.config/scripts/shuffle_wall.sh &
 
 ### Variables
@@ -19,9 +18,9 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term footclient
+set $term wezterm-gui
 # Your preferred application launcher
-set $menu wmenu-run 
+set $menu wmenu-run
 # Your preferred browser
 set $browser firefox
 
@@ -214,7 +213,7 @@ bindsym $mod+r mode "resize"
     set $ps3 Alt+Print
     set $ps4 Alt+Control+Print
     set $psf $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
-    
+
     bindsym $ps1 exec grim - | wl-copy
     bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
     bindsym $ps3 exec grim $psf
