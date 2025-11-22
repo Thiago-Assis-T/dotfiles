@@ -16,3 +16,4 @@ fi
 # Put your fun stuff here.
 alias up='doas emerge -u -D --keep-going --backtrack=100 --newuse --with-bdeps y world'
 eval "$(starship init bash)"
+eval "$(fzf --bash)"
