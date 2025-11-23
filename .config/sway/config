@@ -20,7 +20,9 @@ set $term wezterm-gui
 # Your preferred application launcher
 set $menu wmenu-run
 # Your preferred browser
-set $browser firefox-esr
+set $browser firefox
+
+set $explorer dolphin
 
 set $wallpapers_path $HOME/Pictures/Wallpapers/
 
@@ -58,6 +60,9 @@ input type:keyboard {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # Start File Explorta
+    bindsym $mod+e exec $explorer
 
     # Start a browser
     bindsym $mod+w exec $browser
@@ -141,9 +146,9 @@ input type:keyboard {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+t layout stacking
     bindsym $mod+Shift+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+s layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
