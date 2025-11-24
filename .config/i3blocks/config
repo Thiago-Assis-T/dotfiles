@@ -27,6 +27,10 @@ interval=5
 command=~/.config/scripts/volume.sh
 signal=10
 
+[volume]
+command=~/.config/scripts/battery.sh
+interval=25
+
 [date]
 command=~/.config/scripts/date.sh
 interval=1
