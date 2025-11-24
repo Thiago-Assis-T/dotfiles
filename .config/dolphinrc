@@ -1,0 +1,18 @@
+[General]
+Version=202
+ViewPropsTimestamp=2025,11,23,15,43,42.672
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=glycin-heif,glycin-image-rs,glycin-jxl,glycin-svg
+
+[UiSettings]
+
+ColorScheme=dracula
+
