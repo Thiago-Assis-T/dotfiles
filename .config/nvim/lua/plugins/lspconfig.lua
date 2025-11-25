@@ -31,8 +31,16 @@ return {
 			vim.lsp.enable("phpactor")
 			vim.lsp.config("phpactor", {
 				capabilities = capabilities,
-				root_markers = { "composer.json", "php.ini", ".git" },
+				cmd = { "phpactor", "language-server" },
 				filetypes = { "php" },
+				root_markers = { ".git", "composer.json", ".phpactor.json", ".phpactor.yml" },
+				workspace_required = true,
+				init_options = {
+					["language_server_phpstan.enabled"] = true,
+					["language_server_php_cs_fixer.enabled"] = true,
+					["php_code_sniffer.enabled"] = true,
+					["language_server_psalm.enabled"] = false,
+				},
 			})
 		end,
 	},
