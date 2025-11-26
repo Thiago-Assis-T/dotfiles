@@ -5,6 +5,8 @@
 # Read `man 5 sway` for a complete reference.
 
 exec --no-startup-id dbus-update-activation-environment --all
+exec kdeconnectd
+exec nm-applet
 
 ### Variables
 #
@@ -58,6 +60,7 @@ input type:keyboard {
 #
 # Basics:
 #
+    bindsym $mod+n exec 'swaync-client --toggle-panel'
     # Start a terminal
     bindsym $mod+Return exec $term
 
