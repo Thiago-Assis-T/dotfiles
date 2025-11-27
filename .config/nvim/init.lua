@@ -1,6 +1,3 @@
-require('treesitter')
-require('lspconfig')
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.relativenumber = true
@@ -22,7 +19,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 2
@@ -32,3 +29,8 @@ vim.opt.fileencoding = "utf-8"
 vim.spelllang = "en_ca"
 
 vim.diagnostic.config({ virtual_lines = true })
+
+require('treesitter')
+require('lspconfig')
+require('colors')
+require('line')
