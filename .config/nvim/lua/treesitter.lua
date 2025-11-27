@@ -1,7 +1,7 @@
 vim.pack.add({
 	'https://github.com/nvim-treesitter/nvim-treesitter'
 })
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = "all",
 
@@ -13,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
   auto_install = true,
 
   -- List of parsers to ignore installing (or "all")
-  ignore_install = { "jsonc", "ipkg", "blueprint", "fusion", "t32"  },
+  ignore_install = { "norg","jsonc", "ipkg", "blueprint", "fusion", "t32"  },
 
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -34,4 +34,4 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
-}
+})

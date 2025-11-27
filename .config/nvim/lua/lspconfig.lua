@@ -6,11 +6,13 @@ vim.pack.add({
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls-extras.nvim" },
-  { src = "https://github.com/gbprod/none-ls-php.nvim" },
+	{ src = "https://github.com/gbprod/none-ls-php.nvim" },
 })
 local null_ls = require("null-ls")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 local on_attach = function(client, bufnr)
+	-- workspace diagnostics
+	vim.lsp.buf.workspace_diagnostics({ client })
 	-- Key mappings
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gd", function()
@@ -39,9 +41,9 @@ require("mason-tool-installer").setup({
 		"phpactor",
 		"phpstan",
 		"php-cs-fixer",
-    "ts_ls",
-    "prettierd",
-    "eslint_d",
+		"ts_ls",
+		"prettierd",
+		"eslint_d",
 	},
 })
 vim.lsp.config("tsserver", {
@@ -89,6 +91,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.phpstan,
 		null_ls.builtins.formatting.phpcsfixer,
 		null_ls.builtins.formatting.prettierd,
-    require("none-ls-php.diagnostics.php"),
+		-- require("none-ls-php.diagnostics.php"),
 	},
 })
