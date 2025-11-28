@@ -6,13 +6,10 @@ vim.pack.add({
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls-extras.nvim" },
-	{ src = "https://github.com/gbprod/none-ls-php.nvim" },
 })
 local null_ls = require("null-ls")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 local on_attach = function(client, bufnr)
-	-- workspace diagnostics
-	vim.lsp.buf.workspace_diagnostics({ client })
 	-- Key mappings
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gd", function()
@@ -25,10 +22,14 @@ local on_attach = function(client, bufnr)
 
 	-- Check if the client supports formatting
 	if client:supports_method("textDocument/formatting") then
-		vim.keymap.set("n", "<leader>f", function()
-			vim.lsp.buf.format()
-		end, opts) -- Note: formatting() was also deprecated
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function()
+				vim.lsp.buf.format({ async = false })
+			end,
+		})
 	end
+	vim.lsp.buf.workspace_diagnostics({ client })
 end
 
 require("mason").setup()
@@ -54,17 +55,15 @@ vim.lsp.config("phpactor", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
+		filetypes = { "php" },
 		root_markers = { ".git", "composer.json", ".phpactor.json", ".phpactor.yml" },
-		init_options = {
-			["language_server_phpstan.enabled"] = true,
-			["language_server_php_cs_fixer.enabled"] = true,
-		},
 	},
 })
 vim.lsp.config("lua_ls", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
+		root_markers = { "stylua.toml", ".luarc.json", "init.lua", "selene.toml" },
 		Lua = {
 			runtime = {
 				version = "LuaJIT",
@@ -91,6 +90,5 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.phpstan,
 		null_ls.builtins.formatting.phpcsfixer,
 		null_ls.builtins.formatting.prettierd,
-		-- require("none-ls-php.diagnostics.php"),
 	},
 })
