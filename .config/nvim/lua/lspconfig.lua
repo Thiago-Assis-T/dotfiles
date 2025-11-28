@@ -96,5 +96,6 @@ null_ls.setup({
 	null_ls.builtins.diagnostics.trail_space,
 	null_ls.builtins.formatting.codespell,
 	null_ls.builtins.diagnostics.codespell,
+	null_ls.builtins.diagnostics.selene,
 	null_ls.builtins.completion.spell,
 })
