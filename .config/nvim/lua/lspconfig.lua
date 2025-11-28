@@ -5,7 +5,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
-	{ src = "https://github.com/nvimtools/none-ls-extras.nvim" },
+	{ src = "https://github.com/jay-babu/mason-null-ls.nvim" },
 })
 local null_ls = require("null-ls")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -33,19 +33,28 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-tool-installer").setup({
+require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
+		"ts_ls",
+		"phpactor",
+		"cssls",
+		"html",
+	},
+})
+require("mason-null-ls").setup({
+	automatic_installation = false,
+	ensure_installed = {
 		"stylua",
 		"selene",
-		"phpactor",
 		"phpstan",
 		"php-cs-fixer",
-		"ts_ls",
 		"prettierd",
 		"eslint_d",
+		"htmlhint",
+		"stylelint",
 	},
+	handlers = {},
 })
 vim.lsp.config("tsserver", {
 	on_attach = on_attach,
@@ -84,11 +93,8 @@ vim.lsp.config("lua_ls", {
 	},
 })
 null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.completion.spell,
-		null_ls.builtins.diagnostics.phpstan,
-		null_ls.builtins.formatting.phpcsfixer,
-		null_ls.builtins.formatting.prettierd,
-	},
+	null_ls.builtins.diagnostics.trail_space,
+	null_ls.builtins.formatting.codespell,
+	null_ls.builtins.diagnostics.codespell,
+	null_ls.builtins.completion.spell,
 })

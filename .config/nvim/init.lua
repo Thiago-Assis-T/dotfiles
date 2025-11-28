@@ -30,10 +30,11 @@ vim.spelllang = "en_ca"
 
 vim.diagnostic.config({ virtual_lines = true })
 
-require('colors')
-require('treesitter')
-require('ui')
-require('lspconfig')
-require('line')
-require('blink')
-require('telescope')
+require("colors")
+require("treesitter")
+require("ui")
+require("lspconfig")
+require("line")
+require("blink")
+require("telescope")
+require("git")
