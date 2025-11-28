@@ -4,7 +4,19 @@ vim.pack.add({
 require("nvim-treesitter.configs").setup({
 	modules = {},
 	-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-	ensure_installed = { "lua", "php", "css", "html", "javascript", "typescript", "jsdoc", "json", "toml" },
+	ensure_installed = {
+		"markdown",
+		"vimdoc",
+		"lua",
+		"php",
+		"css",
+		"html",
+		"javascript",
+		"typescript",
+		"jsdoc",
+		"json",
+		"toml",
+	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
