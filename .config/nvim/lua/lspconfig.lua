@@ -45,10 +45,16 @@ require("mason-lspconfig").setup({
 require("mason-null-ls").setup({
 	automatic_installation = false,
 	ensure_installed = {
+		-- Lua:
 		"stylua",
 		"selene",
+		-- PHP:
 		"phpstan",
 		"php-cs-fixer",
+		"phpcs",
+		"phpcbf",
+
+		-- Web:
 		"prettierd",
 		"eslint_d",
 		"htmlhint",
