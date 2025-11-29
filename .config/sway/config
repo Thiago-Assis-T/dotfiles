@@ -61,6 +61,7 @@ input type:keyboard {
 # Basics:
 #
     bindsym $mod+n exec 'swaync-client --toggle-panel'
+    bindsym $mod+Shift+d exec 'swaync-client --toggle-dnd'
     # Start a terminal
     bindsym $mod+Return exec $term
 
