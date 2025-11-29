@@ -6,6 +6,7 @@ vim.pack.add({
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
 	{ src = "https://github.com/jay-babu/mason-null-ls.nvim" },
+	{ src = "https://github.com/nanotee/sqls.nvim" },
 })
 local null_ls = require("null-ls")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -82,6 +83,11 @@ require("mason-null-ls").setup({
 		"codespell",
 	},
 	handlers = {},
+})
+vim.lsp.config("sqls", {
+	on_attach = function(client, bufnr)
+		require("sqls").on_attach(client, bufnr) -- This connects sqls.nvim
+	end,
 })
 vim.lsp.config("tsserver", {
 	on_attach = on_attach,
