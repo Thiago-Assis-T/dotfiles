@@ -85,10 +85,10 @@ require("mason-null-ls").setup({
 	handlers = {},
 })
 vim.lsp.config("sqls", {
-	on_attach = function(client, bufnr)
-		require("sqls").on_attach(client, bufnr) -- This connects sqls.nvim
-	end,
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
+vim.lsp.enable("sqls")
 vim.lsp.config("tsserver", {
 	on_attach = on_attach,
 	capabilities = capabilities,
