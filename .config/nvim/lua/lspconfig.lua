@@ -40,6 +40,7 @@ require("mason-lspconfig").setup({
 		"phpactor",
 		"cssls",
 		"html",
+		"markdown_oxide",
 	},
 })
 require("mason-null-ls").setup({
@@ -48,6 +49,7 @@ require("mason-null-ls").setup({
 		-- Lua:
 		"stylua",
 		"selene",
+
 		-- PHP:
 		"phpstan",
 		"php-cs-fixer",
@@ -59,6 +61,9 @@ require("mason-null-ls").setup({
 		"eslint_d",
 		"htmlhint",
 		"stylelint",
+
+		-- Markdown:
+		"markdownlint",
 	},
 	handlers = {},
 })
