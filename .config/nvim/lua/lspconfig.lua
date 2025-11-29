@@ -53,8 +53,6 @@ require("mason-null-ls").setup({
 		-- PHP:
 		"phpstan",
 		"php-cs-fixer",
-		"phpcs",
-		"phpcbf",
 
 		-- Web:
 		"prettierd",
