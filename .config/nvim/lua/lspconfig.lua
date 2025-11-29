@@ -32,15 +32,27 @@ local on_attach = function(client, bufnr)
 	vim.lsp.buf.workspace_diagnostics({ client })
 end
 
-require("mason").setup()
+require("mason").setup({
+	ui = {
+		border = "single",
+	},
+})
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		-- Lua:
 		"lua_ls",
+
+		-- Web:
 		"ts_ls",
 		"phpactor",
 		"cssls",
 		"html",
+
+		--Markdown:
 		"markdown_oxide",
+
+		-- SQL:
+		"sqls",
 	},
 })
 require("mason-null-ls").setup({
@@ -62,6 +74,12 @@ require("mason-null-ls").setup({
 
 		-- Markdown:
 		"markdownlint",
+
+		-- SQL:
+		"sqruff",
+
+		-- General:
+		"codespell",
 	},
 	handlers = {},
 })
@@ -102,9 +120,12 @@ vim.lsp.config("lua_ls", {
 	},
 })
 null_ls.setup({
-	null_ls.builtins.diagnostics.trail_space,
-	null_ls.builtins.formatting.codespell,
-	null_ls.builtins.diagnostics.codespell,
-	null_ls.builtins.diagnostics.selene,
-	null_ls.builtins.completion.spell,
+	border = "single",
+	sources = {
+		null_ls.builtins.diagnostics.trail_space,
+		null_ls.builtins.formatting.codespell,
+		null_ls.builtins.diagnostics.codespell,
+		null_ls.builtins.diagnostics.selene,
+		null_ls.builtins.completion.spell,
+	},
 })
