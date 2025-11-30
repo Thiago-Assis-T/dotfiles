@@ -32,6 +32,7 @@ vim.diagnostic.config({ virtual_lines = true })
 
 require("colors")
 require("treesitter")
+require("floaterm")
 require("ui")
 require("lspconfig")
 require("line")
