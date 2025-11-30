@@ -69,8 +69,8 @@ require("mason-null-ls").setup({
 		"selene",
 
 		-- PHP:
-		"phpstan",
-		"php-cs-fixer",
+		-- "phpstan",
+		-- "php-cs-fixer",
 
 		-- Web:
 		"prettierd",
@@ -132,9 +132,4 @@ vim.lsp.config("lua_ls", {
 })
 null_ls.setup({
 	border = "single",
-	sources = {
-		null_ls.builtins.diagnostics.trail_space,
-		null_ls.builtins.diagnostics.codespell,
-		null_ls.builtins.diagnostics.selene,
-	},
 })
