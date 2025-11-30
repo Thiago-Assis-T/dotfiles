@@ -36,6 +36,11 @@ end
 require("mason").setup({
 	ui = {
 		border = "single",
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
 	},
 })
 require("mason-lspconfig").setup({
@@ -129,9 +134,7 @@ null_ls.setup({
 	border = "single",
 	sources = {
 		null_ls.builtins.diagnostics.trail_space,
-		null_ls.builtins.formatting.codespell,
 		null_ls.builtins.diagnostics.codespell,
 		null_ls.builtins.diagnostics.selene,
-		null_ls.builtins.completion.spell,
 	},
 })
