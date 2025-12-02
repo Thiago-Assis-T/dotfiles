@@ -1,5 +1,6 @@
 # Use the color palette
 palette = "dracula"
+command_timeout = 10000
 
 [aws]
 style = "bold orange"

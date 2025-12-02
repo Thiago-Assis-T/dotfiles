@@ -6,7 +6,6 @@ vim.pack.add({
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ src = "https://github.com/nvimtools/none-ls.nvim" },
 	{ src = "https://github.com/jay-babu/mason-null-ls.nvim" },
-	{ src = "https://github.com/nanotee/sqls.nvim" },
 })
 local null_ls = require("null-ls")
 local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -30,7 +29,6 @@ local on_attach = function(client, bufnr)
 			end,
 		})
 	end
-	vim.lsp.buf.workspace_diagnostics({ client })
 end
 
 require("mason").setup({
@@ -48,17 +46,17 @@ require("mason-lspconfig").setup({
 		-- Lua:
 		"lua_ls",
 
+		-- PHP
+		"phpactor",
+		"twiggy_language_server",
+
 		-- Web:
 		"ts_ls",
-		"phpactor",
 		"cssls",
 		"html",
 
 		--Markdown:
 		"markdown_oxide",
-
-		-- SQL:
-		"sqls",
 	},
 })
 require("mason-null-ls").setup({
@@ -69,8 +67,10 @@ require("mason-null-ls").setup({
 		"selene",
 
 		-- PHP:
-		-- "phpstan",
-		-- "php-cs-fixer",
+		"phpstan",
+    -- "twigcs",
+		"twig-cs-fixer",
+		"php-cs-fixer",
 
 		-- Web:
 		"prettierd",
@@ -81,19 +81,11 @@ require("mason-null-ls").setup({
 		-- Markdown:
 		"markdownlint",
 
-		-- SQL:
-		"sqruff",
-
-		-- General:
-		"codespell",
+    -- SQL: 
+    "sqlruf",
 	},
 	handlers = {},
 })
-vim.lsp.config("sqls", {
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-vim.lsp.enable("sqls")
 vim.lsp.config("tsserver", {
 	on_attach = on_attach,
 	capabilities = capabilities,

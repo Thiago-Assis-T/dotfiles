@@ -1,11 +1,11 @@
 connections:
-  - alias: gestao_projetos
+  - alias: agora
     driver: mysql
     proto: tcp
     user: root
     passwd: "4Hg428u$@"
     host: 127.0.0.1
     port: 3306
-    dbName: KANBOARDPACTORJ
+    dbName: AGORA 
     params:
       tls: skip-verify
