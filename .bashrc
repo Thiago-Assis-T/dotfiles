@@ -17,5 +17,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Put your fun stuff here.
 alias nvim='/home/thiago/Downloads/nvim-linux-x86_64/bin/nvim'
+alias connect_db='cloudflared access tcp --hostname database.thiagohome.com --url localhost:3306'
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
