@@ -76,6 +76,10 @@
       "rev": "f0caedf064aa8c926325d7fe64c141d29b8e7853",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "todo-comments.nvim": {
+      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+      "src": "https://github.com/folke/todo-comments.nvim"
+    },
     "tree-sitter-language-injection.nvim": {
       "rev": "5f5b962232d189017d040a55eee623daf486b393",
       "src": "https://github.com/dariuscorvus/tree-sitter-language-injection.nvim"

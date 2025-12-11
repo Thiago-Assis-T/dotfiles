@@ -20,3 +20,6 @@ alias nvim='/home/thiago/Downloads/nvim-linux-x86_64/bin/nvim'
 alias connect_db='cloudflared access tcp --hostname database.thiagohome.com --url localhost:3306'
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
+
+# opencode
+export PATH=/home/thiago/.opencode/bin:$PATH

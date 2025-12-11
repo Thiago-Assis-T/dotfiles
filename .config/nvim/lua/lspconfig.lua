@@ -57,6 +57,11 @@ require("mason-lspconfig").setup({
 
 		--Markdown:
 		"markdown_oxide",
+
+    -- Yaml
+    "yamlls",
+
+
 	},
 })
 require("mason-null-ls").setup({
@@ -81,8 +86,6 @@ require("mason-null-ls").setup({
 		-- Markdown:
 		"markdownlint",
 
-    -- SQL: 
-    "sqlruf",
 	},
 	handlers = {},
 })
