@@ -13,13 +13,10 @@ if [[ $- != *i* ]]; then
   return
 fi
 
-export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Put your fun stuff here.
-alias nvim='/home/thiago/Downloads/nvim-linux-x86_64/bin/nvim'
 alias connect_db='cloudflared access tcp --hostname database.thiagohome.com --url localhost:3306'
-eval "$(starship init bash)"
+alias ls='ls --color'
 eval "$(fzf --bash)"
+eval "$(starship init bash)"
 
-# opencode
-export PATH=/home/thiago/.opencode/bin:$PATH
