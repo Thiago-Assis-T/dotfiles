@@ -1,3 +1,4 @@
+require "tokyonight"
 require "opts"
+require "treesitter"
 require "keymaps"
-require "config.lazy"
