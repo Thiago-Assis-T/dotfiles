@@ -1,4 +1,6 @@
-require "tokyonight"
+require "colorscheme"
 require "opts"
 require "treesitter"
+require "telescope-nvim"
+require "lsp-config"
 require "keymaps"

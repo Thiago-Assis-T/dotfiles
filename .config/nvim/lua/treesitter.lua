@@ -3,6 +3,6 @@ vim.pack.add({
 })
 require'nvim-treesitter'.install("all")
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '*' },
+  pattern = { 'lua', 'php', 'dart', 'css', 'html' },
   callback = function() vim.treesitter.start() end,
 })
