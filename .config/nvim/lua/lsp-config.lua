@@ -3,7 +3,7 @@ vim.pack.add {
     { src = 'https://github.com/j-hui/fidget.nvim' },
 }
 require("fidget").setup({})
-local servers = { 'lua_ls', 'clangd', 'dartls' }
+local servers = { 'phpactor', 'lua_ls', 'clangd', 'dartls' }
 
 for _, server in ipairs(servers) do
     vim.lsp.enable(server)

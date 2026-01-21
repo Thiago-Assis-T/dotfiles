@@ -3,4 +3,8 @@ require "opts"
 require "treesitter"
 require "telescope-nvim"
 require "lsp-config"
+require "cmp"
 require "keymaps"
+require "line"
+require "misc"
+

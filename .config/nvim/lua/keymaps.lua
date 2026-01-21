@@ -9,3 +9,7 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope Diagn
 
 -- Formating keybind:
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'LSP File Format' })
+
+
+-- Trouble List
+vim.keymap.set('n', '<leader>q', ':Trouble diagnostics toggle <CR>', { desc = 'LSP File Format' })
