@@ -1,28 +1,28 @@
-vim.pack.add{
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
+vim.pack.add {
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/j-hui/fidget.nvim' },
 }
-local servers = { 'lua_ls', 'clangd', 'dartls'}
+require("fidget").setup({})
+local servers = { 'lua_ls', 'clangd', 'dartls' }
 
 for _, server in ipairs(servers) do
     vim.lsp.enable(server)
 end
 
 vim.lsp.config('lua_ls', {
-  filetypes = { 'lua' },
-  root_markers = { '.luarc.json', '.git' },
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
+    filetypes = { 'lua' },
+    root_markers = { '.luarc.json', '.git' },
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+        },
     },
-  },
 })
-
-

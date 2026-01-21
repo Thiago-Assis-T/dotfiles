@@ -22,8 +22,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 vim.diagnostic.config({
-    virtual_lines = {
-        prefix = "●",  -- Customize the prefix for virtual lines
-        spacing = 2,   -- Space between the virtual line and the code
-    },
+    virtual_lines = true
 })
+
+vim.o.winborder = 'single' -- Change 'rounded' to your preferred style
