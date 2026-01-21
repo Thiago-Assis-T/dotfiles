@@ -20,3 +20,10 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
+
+vim.diagnostic.config({
+    virtual_lines = {
+        prefix = "●",  -- Customize the prefix for virtual lines
+        spacing = 2,   -- Space between the virtual line and the code
+    },
+})

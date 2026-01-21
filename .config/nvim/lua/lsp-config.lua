@@ -1,8 +1,12 @@
 vim.pack.add{
   { src = 'https://github.com/neovim/nvim-lspconfig' },
-  {src = 'https://github.com/mason-org/mason.nvim'},
 }
-require("mason").setup()
+local servers = { 'lua_ls', 'clangd', 'dartls'}
+
+for _, server in ipairs(servers) do
+    vim.lsp.enable(server)
+end
+
 vim.lsp.config('lua_ls', {
   filetypes = { 'lua' },
   root_markers = { '.luarc.json', '.git' },
@@ -20,5 +24,5 @@ vim.lsp.config('lua_ls', {
     },
   },
 })
-vim.lsp.enable('lua_ls')
+
 
