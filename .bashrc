@@ -15,7 +15,7 @@ fi
 
 
 # Put your fun stuff here.
-alias connect_db='cloudflared access tcp --hostname database.thiagohome.com --url localhost:3306'
+CHROME_EXECUTABLE=google-chrome-stable
 alias ls='ls --color'
 eval "$(fzf --bash)"
 eval "$(starship init bash)"

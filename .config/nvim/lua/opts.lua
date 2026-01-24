@@ -26,3 +26,4 @@ vim.diagnostic.config({
 })
 
 vim.o.winborder = 'single' -- Change 'rounded' to your preferred style
+vim.o.clipboard = 'unnamedplus'
