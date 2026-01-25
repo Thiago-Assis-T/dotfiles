@@ -29,7 +29,7 @@ vim.lsp.config('lua_ls', {
     },
 })
 
-local servers = { 'phpactor', 'lua_ls', 'clangd' }
+local servers = { 'bashls', 'phpactor', 'lua_ls', 'clangd' }
 
 for _, server in ipairs(servers) do
     vim.lsp.enable(server)
