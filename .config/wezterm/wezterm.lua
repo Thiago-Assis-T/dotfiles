@@ -6,6 +6,7 @@ return {
 
   -- Window appearance
   window_decorations = "NONE",  -- Removes title bar
+  window_background_opacity = 0.8,
   hide_tab_bar_if_only_one_tab = true,
   enable_tab_bar = false,       -- Completely disable tab bar
   use_fancy_tab_bar = false,
