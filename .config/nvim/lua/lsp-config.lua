@@ -2,6 +2,31 @@ vim.pack.add {
     { src = 'https://github.com/neovim/nvim-lspconfig' },
 }
 
+local servers = { 'bashls', 'lua_ls', 'clangd', 'zls', 'pylsp', 'gopls', 'phpactor' }
+
+for _, server in ipairs(servers) do
+    vim.lsp.enable(server)
+end
+
+
+vim.lsp.config('pylsp', {
+    settings = {
+        pylsp = {
+            plugins = {
+                rope = { enabled = true },
+                pyflakes = { enabled = true },
+                mccabe = { enabled = true },
+                pycodestyle = { enabled = true },
+                pydocstyle = { enabled = true },
+                autopep8 = { enabled = true },
+                yapf = { enabled = true },
+                flake8 = { enabled = true },
+                pylint = { enabled = true },
+            }
+        }
+    }
+})
+
 vim.lsp.config('phpactor', {
     init_options = {
         ["language_server_phpstan.enabled"] = true,
@@ -27,11 +52,6 @@ vim.lsp.config('lua_ls', {
     },
 })
 
-local servers = { 'bashls', 'phpactor', 'lua_ls', 'clangd', 'zls', 'gopls' }
-
-for _, server in ipairs(servers) do
-    vim.lsp.enable(server)
-end
 
 -- LSP keymaps and autocmds setup
 local function setup_lsp_keymaps()

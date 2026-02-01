@@ -69,7 +69,7 @@
     "tooltip-format-disabled": "Bluetooth: Off",
     "tooltip-format-connected": "{device_alias}",
     "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",
-    "on-click": "bluetoothctl power on",
+    "on-click": "blueman-manager",
     "on-click-right": "bluetoothctl power off",
     "on-click-middle": "blueman-manager"
   },
