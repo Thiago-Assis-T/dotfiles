@@ -9,28 +9,16 @@
 # documentation.
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
+# Start graphical session target for systemd services
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
-systemctl --user restart xdg-desktop-portal
-
-killall dunst 2>/dev/null
-killall waybar 2>/dev/null
-killall awww-daemon 2>/dev/null
-dunst &
-waybar &
-
-awww-daemon &
-
-awww img $HOME/Pictures/Wallpapers/$(ls $HOME/Pictures/Wallpapers | shuf -n 1)
-
-
+systemctl --user start graphical-session.target
 
 riverctl keyboard-layout br
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn wezterm-gui
 
-riverctl map normal SuperShift P spawn awww img $HOME/Pictures/Wallpapers/$(ls $HOME/Pictures/Wallpapers | shuf -n 1)
+riverctl map normal Super+Shift P spawn 'systemctl --user start change-wallpaper.service'
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close

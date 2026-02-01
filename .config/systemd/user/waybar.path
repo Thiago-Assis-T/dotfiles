@@ -1,0 +1,9 @@
+[Unit]
+Description=Monitor Waybar config files for changes
+
+[Path]
+PathChanged=%h/.config/waybar/config
+PathChanged=%h/.config/waybar/style.css
+
+[Install]
+WantedBy=default.target

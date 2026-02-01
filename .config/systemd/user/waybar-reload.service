@@ -1,0 +1,11 @@
+[Unit]
+Description=Reload Waybar configuration
+After=waybar.service
+Requires=waybar.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user kill -s SIGUSR2 waybar.service
+
+[Install]
+WantedBy=default.target

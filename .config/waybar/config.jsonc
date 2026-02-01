@@ -2,11 +2,7 @@
   "$schema": "https://gist.githubusercontent.com/Alexays/bb6c02c9a4f8c8df3b4d3c5b4d3c5b4d/raw/waybar.schema.json",
   "layer": "top",
   "position": "top",
-  "height": 30,
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
+  "height": 28,
   "modules-left": ["custom/launcher", "river/tags", "river/window"],
   "modules-center": ["clock"],
   "modules-right": [
@@ -14,6 +10,7 @@
     "pulseaudio",
     "backlight",
     "power-profiles-daemon",
+    "bluetooth",
     "battery",
     "network",
     "cpu",
@@ -24,7 +21,7 @@
   "custom/launcher": {
     "format": " ",
     "tooltip": false,
-    "on-click": "fuzzel " 
+    "on-click": "fuzzel" 
   },
   
   "river/tags": {
@@ -39,7 +36,7 @@
       "4": ""
     },
     "on-click": "riverctl set-focused-tags",
-    "on-click-middle": "riverctl toggle-focused-tags",
+    "on-click-right": "riverctl toggle-focused-tags",  // Changed from middle to right click
     "on-scroll-up": "riverctl focus-previous-tags",
     "on-scroll-down": "riverctl focus-next-tags"
   },
@@ -60,6 +57,21 @@
     "tooltip-format": "Power Profile: {profile}",
     "on-click": "powerprofilesctl set next",
     "on-click-right": "powerprofilesctl launch"
+  },
+  
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱 {device_battery_percentage}%",
+    "tooltip-format": "{status}",
+    "tooltip-format-enabled": "Bluetooth: On",
+    "tooltip-format-disabled": "Bluetooth: Off",
+    "tooltip-format-connected": "{device_alias}",
+    "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",
+    "on-click": "bluetoothctl power on",
+    "on-click-right": "bluetoothctl power off",
+    "on-click-middle": "blueman-manager"
   },
   
   "clock": {
@@ -180,7 +192,7 @@
     "interval": 5,
     "max-length": 15,
     "tooltip": false,
-    "on-click": "wezterm start -- htop"
+    "on-click": "wezterm start -- btop"
   },
   
   "memory": {
@@ -188,7 +200,7 @@
     "interval": 5,
     "max-length": 15,
     "tooltip": false,
-    "on-click": "wezterm start -- htop"
+    "on-click": "wezterm start -- btop"
   },
   
   "tray": {

@@ -1,23 +1,14 @@
 [Unit]
 Description=Idle manager for Wayland (swayidle)
+BindsTo=graphical-session.target
 After=graphical-session.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/swayidle -w \
-    timeout 300 'waylock -fork-on-lock \
-  -init-color 0x1a1b26 \
-  -input-color 0x7aa2f7 \
-  -fail-color 0xf7768e \
-  -input-alt-color 0xbb9af7 \
-  -ignore-empty-password' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'waylock -fork-on-lock\
-  -init-color 0x1a1b26 \
-  -input-color 0x7aa2f7 \
-  -fail-color 0xf7768e \
-  -input-alt-color 0xbb9af7 \
-  -ignore-empty-password'
+    timeout 300 'waylock -fork-on-lock' \
+    timeout 600 'brightnessctl s 0' resume 'brightnessctl s 1000' \
+    before-sleep 'waylock -fork-on-lock'
 Restart=on-failure
 
 [Install]

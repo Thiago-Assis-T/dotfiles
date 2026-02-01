@@ -1,7 +1,7 @@
 * {
   /* Global */
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
   min-height: 0;
   font-family: "D2CodingLigature Nerd Font Propo", "FiraCode Nerd Font", "JetBrainsMono Nerd Font", sans-serif;
   font-size: 13px;
@@ -9,55 +9,61 @@
 }
 
 window#waybar {
-  /* Bar - Now at top */
-  background: rgba(26, 27, 38, 0.85);  /* Tokyo Night background - more transparent (0.85 instead of 0.95) */
-  color: #c0caf5;  /* Tokyo Night foreground */
+  /* Semi-transparent bar */
+  background: rgba(26, 27, 38, 0);
+  color: #c0caf5;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-bottom: 1px solid rgba(36, 40, 59, 0.8); /* Tokyo Night storm */
+  border: none;
+  margin: 4px;
 }
 
 tooltip {
-  background: #1a1b26;  /* Tokyo Night background */
-  border: 2px solid #7aa2f7;  /* Tokyo Night blue */
+  background: rgba(26, 27, 38, 0.95);
+  border: 2px solid #7aa2f7;
   border-radius: 8px;
+  padding: 8px;
 }
 
 tooltip label {
-  color: #c0caf5;  /* Tokyo Night foreground */
+  color: #c0caf5;
 }
 
 /* River Tags (Workspaces) */
 #tags {
-  margin: 0;
+  margin: 0 4px;
 }
 
 #tags button {
-  color: #565f89;  /* Tokyo Night comment (darker gray) */
-  padding: 0 6px;
-  margin: 2px 0;
+  color: #565f89;
+  padding: 4px 8px;
+  margin: 1px;
+  border-radius: 6px;
+  background: rgba(36, 40, 59, 0.4);
+  transition: all 0.2s ease;
 }
 
 #tags button.focused {
-  color: #7aa2f7;  /* Tokyo Night blue */
-  background: rgba(122, 162, 247, 0.1);
-  border-radius: 4px;
+  color: #7aa2f7;
+  background: rgba(122, 162, 247, 0.25);
 }
 
 #tags button.occupied {
-  color: #c0caf5;  /* Tokyo Night foreground */
+  color: #c0caf5;
+  background: rgba(36, 40, 59, 0.4);
 }
 
 #tags button.urgent {
-  color: #f7768e;  /* Tokyo Night red */
+  color: #f7768e;
+  background: rgba(247, 118, 142, 0.2);
 }
 
 #tags button:hover {
-  background: rgba(122, 162, 247, 0.2);
+  background: rgba(122, 162, 247, 0.3);
   color: #c0caf5;
 }
 
-/* Modules */
+/* Module Container */
 #custom-launcher,
 #window,
 #clock,
@@ -65,82 +71,117 @@ tooltip label {
 #pulseaudio,
 #backlight,
 #power-profiles-daemon,
+#bluetooth,
 #battery,
 #network,
 #cpu,
 #memory,
 #tray {
-  padding: 0 10px;
-  margin: 4px 2px;
-  color: #c0caf5;  /* Tokyo Night foreground */
-  background: rgba(36, 40, 59, 0.3);  /* Tokyo Night storm (more transparent: 0.3 instead of 0.4) */
-  border-radius: 4px;
+  padding: 2px 8px;
+  margin: 1px;
+  color: #c0caf5;
+  background: rgba(36, 40, 59, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+#custom-launcher:hover,
+#window:hover,
+#clock:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#power-profiles-daemon:hover,
+#bluetooth:hover,
+#battery:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#tray:hover {
+  background: rgba(44, 48, 70, 0.6);
 }
 
 /* Module-specific colors - Tokyo Night scheme */
 #custom-launcher {
-  color: #7aa2f7;  /* Tokyo Night blue */
-  background: rgba(122, 162, 247, 0.15);
+  color: #7aa2f7;
+  padding: 2px 8px 2px 12px;
+  font-size: 16px;  /* Larger icon */
+  text-shadow: 0 0 8px rgba(122, 162, 247, 0.5);  /* Glow effect */
 }
 
 #window {
-  color: #c0caf5;  /* Tokyo Night foreground */
+  color: #c0caf5;
   font-style: italic;
+  min-width: 40px;
 }
 
 #clock {
-  color: #c0caf5;  /* Tokyo Night foreground */
+  color: #c0caf5;
   font-weight: bold;
 }
 
 #mpris {
-  color: #bb9af7;  /* Tokyo Night purple */
+  color: #bb9af7;
   font-style: italic;
 }
 
 #pulseaudio {
-  color: #e0af68;  /* Tokyo Night yellow */
+  color: #e0af68;
 }
 
 #pulseaudio.muted {
-  color: #565f89;  /* Tokyo Night comment */
+  color: #565f89;
 }
 
 #backlight {
-  color: #ff9e64;  /* Tokyo Night orange */
+  color: #ff9e64;
 }
 
 /* Power Profiles Daemon */
 #power-profiles-daemon {
-  color: #73daca;  /* Tokyo Night teal */
+  color: #73daca;
 }
 
 #power-profiles-daemon.performance {
-  color: #f7768e;  /* Tokyo Night red */
+  color: #f7768e;
 }
 
 #power-profiles-daemon.balanced {
-  color: #73daca;  /* Tokyo Night teal */
+  color: #73daca;
 }
 
 #power-profiles-daemon.power-saver {
-  color: #9ece6a;  /* Tokyo Night green */
+  color: #9ece6a;
+}
+
+/* Bluetooth Module */
+#bluetooth {
+  color: #7aa2f7;
+}
+
+#bluetooth.disabled {
+  color: #565f89;
+}
+
+#bluetooth.connected {
+  color: #73daca;
 }
 
 #battery {
-  color: #9ece6a;  /* Tokyo Night green */
+  color: #9ece6a;
 }
 
 #battery.charging, #battery.plugged {
-  color: #73daca;  /* Tokyo Night teal */
+  color: #73daca;
 }
 
 #battery.warning {
-  color: #e0af68;  /* Tokyo Night yellow */
+  color: #e0af68;
 }
 
 #battery.critical:not(.charging) {
-  color: #f7768e;  /* Tokyo Night red */
+  color: #f7768e;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -149,117 +190,59 @@ tooltip label {
 }
 
 #network {
-  color: #7aa2f7;  /* Tokyo Night blue */
+  color: #7aa2f7;
 }
 
 #network.disconnected {
-  color: #565f89;  /* Tokyo Night comment */
+  color: #565f89;
 }
 
 #cpu {
-  color: #f7768e;  /* Tokyo Night red */
-  background: rgba(247, 118, 142, 0.1);
+  color: #f7768e;
 }
 
 #memory {
-  color: #73daca;  /* Tokyo Night teal */
-  background: rgba(115, 218, 202, 0.1);
+  color: #73daca;
 }
 
 #tray {
-  background: rgba(36, 40, 59, 0.4);  /* More transparent: 0.4 instead of 0.6 */
+  background: rgba(36, 40, 59, 0.5);
+}
+
+/* Tray icons */
+#tray > * {
+  margin: 0 1px;
+  border-radius: 6px;
+}
+
+#tray > *:hover {
+  background: rgba(122, 162, 247, 0.2);
 }
 
 /* Animation for critical battery */
 @keyframes blink {
   to {
     background-color: rgba(247, 118, 142, 0.3);
-    color: #1a1b26;
   }
 }
 
-/* If idle inhibitor is present */
-#idle_inhibitor {
-  color: #565f89;  /* Tokyo Night comment */
-}
-
-#idle_inhibitor.activated {
-  color: #c0caf5;  /* Tokyo Night foreground */
-}
-
-/* Enhanced Module Interactions - Fixed for Waybar CSS compatibility */
-#custom-launcher:hover {
-    background: rgba(122, 162, 247, 0.25);
-    color: #7aa2f7;
-}
-
-#pulseaudio:hover {
-    background: rgba(224, 175, 104, 0.15);
-}
-
-#battery:hover {
-    background: rgba(158, 206, 106, 0.15);
-}
-
-#network:hover {
-    background: rgba(122, 162, 247, 0.15);
-}
-
-#cpu:hover {
-    background: rgba(247, 118, 142, 0.15);
-}
-
-#memory:hover {
-    background: rgba(115, 218, 202, 0.15);
-}
-
-#backlight:hover {
-    background: rgba(255, 158, 100, 0.15);
-}
-
-#power-profiles-daemon:hover {
-    background: rgba(115, 218, 202, 0.15);
-}
-
-#mpris:hover {
-    background: rgba(187, 154, 247, 0.15);
-}
-
-#clock:hover {
-    background: rgba(192, 202, 245, 0.15);
-}
-
-/* Active states for modules - Fixed: removed transform property */
+/* Active states for modules */
+#custom-launcher:active,
 #pulseaudio:active,
 #battery:active,
 #network:active,
 #cpu:active,
 #memory:active,
-#custom-launcher:active,
 #backlight:active,
 #power-profiles-daemon:active,
+#bluetooth:active,
 #mpris:active,
 #clock:active {
-    opacity: 0.8;
+  background: rgba(36, 40, 59, 0.7);
+  transition: all 0.1s ease;
 }
 
-/* Tooltip enhancements */
-tooltip * {
-    font-family: "D2CodingLigature Nerd Font Propo", sans-serif;
-    font-size: 11px;
-}
-
-/* Tray improvements */
-#tray > * {
-    margin: 0 2px;
-}
-
-#tray > *:hover {
-    background: rgba(122, 162, 247, 0.2);
-    border-radius: 4px;
-}
-
-/* Smooth transitions for all modules - Fixed: removed transform property */
+/* Smooth transitions for all modules */
 #custom-launcher,
 #window,
 #clock,
@@ -267,88 +250,51 @@ tooltip * {
 #pulseaudio,
 #backlight,
 #power-profiles-daemon,
+#bluetooth,
 #battery,
 #network,
 #cpu,
 #memory,
 #tray {
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* Scrollbar styling for modules that support scrolling */
-#pulseaudio,
-#backlight,
-#battery {
-    /* Scroll indicators */
+  transition: all 0.3s ease;
 }
 
 /* Window title truncation */
 #window {
-    min-width: 40px;
+  min-width: 40px;
 }
 
-/* Tags (Workspaces) additional styling */
-#tags button {
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-#tags button:hover {
-    background: rgba(122, 162, 247, 0.2);
-}
-
-#tags button.focused:hover {
-    background: rgba(122, 162, 247, 0.3);
-}
-
-#tags button.urgent:hover {
-    background: rgba(247, 118, 142, 0.2);
-}
-
-/* Additional module states */
-#network.wifi {
-    color: #7aa2f7;
-}
-
-#network.ethernet {
-    color: #73daca;
-}
-
-#mpris.playing {
-    color: #bb9af7;
-}
-
-#mpris.paused {
-    color: #565f89;
-}
-
-/* Media player progress indicator (if supported) */
+/* Media player progress indicator */
 #mpris progress {
-    background-color: #565f89;
-    border-radius: 2px;
-    min-height: 2px;
-    margin: 2px 0;
+  background-color: rgba(86, 95, 137, 0.3);
+  border-radius: 2px;
+  min-height: 2px;
+  margin: 2px 0;
 }
 
 #mpris progress bar {
-    background-color: #bb9af7;
-    border-radius: 2px;
+  background-color: #bb9af7;
+  border-radius: 2px;
 }
 
 /* CPU/Memory usage indicators */
 #cpu.high {
-    color: #f7768e;
-    background: rgba(247, 118, 142, 0.2);
+  color: #f7768e;
 }
 
 #memory.high {
-    color: #e0af68;
-    background: rgba(224, 175, 104, 0.2);
+  color: #e0af68;
 }
 
-/* Additional Tokyo Night colors reference:
-   - Magenta: #bb9af7
-   - Cyan: #7dcfff
-   - Black: #1a1b26
-   - Gray: #565f89
-   - Light Gray: #9aa5ce
-*/
+/* Separator effect between module groups */
+.modules-left > widget:first-child > *,
+.modules-center > widget:first-child > *,
+.modules-right > widget:first-child > * {
+  margin-left: 0;
+}
+
+.modules-left > widget:last-child > *,
+.modules-center > widget:last-child > *,
+.modules-right > widget:last-child > * {
+  margin-right: 0;
+}

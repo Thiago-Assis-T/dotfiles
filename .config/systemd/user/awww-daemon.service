@@ -1,5 +1,5 @@
 [Unit]
-Description=Dunst notification daemon
+Description=awww wallpaper daemon
 After=graphical-session.target
 BindsTo=graphical-session.target
 
@@ -7,10 +7,12 @@ BindsTo=graphical-session.target
 Type=simple
 Environment=WAYLAND_DISPLAY=%t/wayland-1
 Environment=XDG_RUNTIME_DIR=%t
-Environment=DISPLAY=:0
-ExecStart=/usr/bin/dunst
+Environment=XDG_CURRENT_DESKTOP=river
+ExecStart=/usr/bin/awww-daemon
 Restart=on-failure
-RestartSec=5
+RestartSec=3
+KillMode=process
+TimeoutStopSec=2
 
 [Install]
 WantedBy=graphical-session.target
