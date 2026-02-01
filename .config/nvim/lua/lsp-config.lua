@@ -2,7 +2,7 @@ vim.pack.add {
     { src = 'https://github.com/neovim/nvim-lspconfig' },
 }
 
-local servers = { 'bashls', 'lua_ls', 'clangd', 'zls', 'pylsp', 'gopls', 'phpactor' }
+local servers = { 'bashls', 'lua_ls', 'clangd', 'zls', 'pylsp', 'gopls', 'phpactor', 'rust_analyzer' }
 
 for _, server in ipairs(servers) do
     vim.lsp.enable(server)
