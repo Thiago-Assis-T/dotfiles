@@ -1,10 +1,13 @@
 [Unit]
 Description=Idle manager for Wayland (swayidle)
-BindsTo=graphical-session.target
 After=graphical-session.target
+BindsTo=graphical-session.target
+Requires=graphical-session.target
+Wants=graphical-session.target  
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/swayidle -w \
     timeout 300 'waylock -fork-on-lock' \
     timeout 600 'brightnessctl s 0' resume 'brightnessctl s 1000' \

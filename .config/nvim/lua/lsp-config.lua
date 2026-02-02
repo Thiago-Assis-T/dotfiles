@@ -2,12 +2,41 @@ vim.pack.add {
     { src = 'https://github.com/neovim/nvim-lspconfig' },
 }
 
-local servers = { 'bashls', 'lua_ls', 'clangd', 'zls', 'pylsp', 'gopls', 'phpactor', 'rust_analyzer' }
+local servers = { 'bashls', 'lua_ls', 'clangd', 'zls', 'pylsp', 'gopls', 'phpactor', 'rust_analyzer', 'texlab',
+    'systemd_lsp' }
 
 for _, server in ipairs(servers) do
     vim.lsp.enable(server)
 end
 
+vim.lsp.config('systemd_lsp', {
+    cmd = { "systemd-language-server" },
+})
+
+vim.lsp.config('texlab', {
+    texlab = {
+        bibtexFormatter = "texlab",
+        build = {
+            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+            executable = "latexmk",
+            forwardSearchAfter = true,
+            onSave = true
+        },
+        chktex = {
+            onEdit = true,
+            onOpenAndSave = true
+        },
+        diagnosticsDelay = 300,
+        formatterLineLength = 80,
+        forwardSearch = {
+            args = {}
+        },
+        latexFormatter = "latexindent",
+        latexindent = {
+            modifyLineBreaks = true
+        }
+    }
+})
 
 vim.lsp.config('pylsp', {
     settings = {
@@ -32,8 +61,7 @@ vim.lsp.config('phpactor', {
         ["language_server_phpstan.enabled"] = true,
         ["language_server_psalm.enabled"] = false,
     }
-}
-)
+})
 vim.lsp.config('lua_ls', {
     filetypes = { 'lua' },
     root_markers = { '.luarc.json', '.git' },

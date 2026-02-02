@@ -1,0 +1,4 @@
+theme = "TokyoNight Night"
+window-decoration = none
+background-opacity = 0.8
+quit-after-last-window-closed = false
