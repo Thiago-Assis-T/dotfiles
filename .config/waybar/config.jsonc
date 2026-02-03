@@ -50,8 +50,8 @@
     "format": "{icon}",
     "format-icons": {
       "performance": "󰓅",
-      "balanced": "󰗜",
-      "power-saver": "󰾅"
+      "balanced": "󰾅",
+      "power-saver": "󰗜"
     },
     "tooltip": true,
     "tooltip-format": "Power Profile: {profile}",
@@ -191,7 +191,7 @@
     "format": "󰍛 {usage}%",
     "interval": 5,
     "max-length": 15,
-    "tooltip": false,
+    "tooltip": true,
     "on-click": "wezterm start -- btop"
   },
   
@@ -199,7 +199,7 @@
     "format": "󰆼 {percentage}%",
     "interval": 5,
     "max-length": 15,
-    "tooltip": false,
+    "tooltip": true,
     "on-click": "wezterm start -- btop"
   },
   

@@ -15,7 +15,6 @@ fi
 
 
 # Put your fun stuff here.
-CHROME_EXECUTABLE=google-chrome-stable
 alias ls='ls --color'
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
