@@ -51,7 +51,7 @@
     "format-icons": {
       "performance": "󰓅",
       "balanced": "󰾅",
-      "power-saver": "󰗜"
+      "power-saver": "󰾆"
     },
     "tooltip": true,
     "tooltip-format": "Power Profile: {profile}",
