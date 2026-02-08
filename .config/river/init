@@ -9,9 +9,15 @@ export XDG_CURRENT_DESKTOP=river
 export QT_QPA_PLATFORM=wayland
 export MOZ_ENABLE_WAYLAND=1
 export XDG_SESSION_TYPE=wayland
+export QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl
+export QT_WAYLAND_SHELL_INTEGRATION=ivi-shell
+export GDK_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export LIBVA_DRIVER_NAME=iHD
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Start systemd graphical session
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user import-environment _JAVA_AWT_WM_NONREPARENTING LIBVA_DRIVER_NAME SDL_VIDEODRIVER GDK_BACKEND QT_WAYLAND_SHELL_INTEGRATION QT_WAYLAND_CLIENT_BUFFER_INTEGRATION WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE QT_QPA_PLATFORM MOZ_ENABLE_WAYLAND
 systemctl --user start graphical-session.target
 
 # Start necessary services
