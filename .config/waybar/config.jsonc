@@ -19,7 +19,7 @@
   ],
   
   "custom/launcher": {
-    "format": " ",
+    "format": "󰣇 ",
     "tooltip": false,
     "on-click": "fuzzel" 
   },
@@ -119,10 +119,8 @@
   
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "󰝟",
-    "format-icons": {
-      "default": ["", "", ""]
-    },
+    "format-muted": " ",
+    "format-icons": [" ", " ", " "],
     "scroll-step": 5,
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -134,7 +132,7 @@
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "tooltip-format": "{percent}%",
-    "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"],
+    "format-icons": ["󰃚 ", "󰃛 ", "󰃜 ", "󰃝 ", "󰃞 ", "󰃟 ", "󰃠 "],
     "on-scroll-up": "brightnessctl set +5%",
     "on-scroll-down": "brightnessctl set 5%-"
   },

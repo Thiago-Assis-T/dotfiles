@@ -184,7 +184,7 @@ riverctl rule-add -title "*Open File*" float
 
 # Assign applications to specific tags
 riverctl rule-add -app-id "firefox" -tags 1
-riverctl rule-add -app-id "wezterm-gui" -tags 2
+riverctl rule-add -title "YouTube Music" -tags 9
 riverctl rule-add -app-id "nemo" -tags 3
 
 # Start rivertile layout

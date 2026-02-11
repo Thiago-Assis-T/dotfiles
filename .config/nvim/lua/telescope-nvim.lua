@@ -6,6 +6,18 @@ vim.pack.add({
     'https://github.com/nvim-telescope/telescope.nvim',
 })
 require('telescope').setup({
+    defaults = {
+        file_ignore_patterns = {
+            'node_modules',
+            'build',
+            'macos',
+            'linux',
+            'android',
+            'ios',
+            'web',
+            'windows',
+        },
+    },
     extensions = {
         fzy_native = {
             override_generic_sorter = true,
