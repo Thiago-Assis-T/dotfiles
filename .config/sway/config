@@ -1,214 +1,174 @@
 # --- Environment ---
 # Set Wayland environment variables (if not already set in profile)
 # These may need to be exported before launching Sway
-# export XDG_CURRENT_DESKTOP=sway
-# export QT_QPA_PLATFORM=wayland
-# export MOZ_ENABLE_WAYLAND=1
-# export XDG_SESSION_TYPE=wayland
-# export QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl
-# export GDK_BACKEND=wayland
-# export SDL_VIDEODRIVER=wayland
-# export LIBVA_DRIVER_NAME=iHD
-# export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Start background services
-exec dunst
-exec wl-paste -t text --watch clipman store
+#######################################################################
+#                         SWAY CONFIG                                 #
+#                     Tokyo Night Color Scheme                        #
+#                           with Waybar                                #
+#######################################################################
 
-# --- Input Configuration ---
-# Keyboard layout (Brazilian)
-input "*" {
-    xkb_layout "br"
-    repeat_delay 300
-    repeat_rate 50
-}
+### Variables: Tokyo Night Color Scheme
+# Background
+set $bg      "#1a1b26"
+# Foreground
+set $fg      "#c0caf5"
+# Blue accent
+set $accent  "#7aa2f7"
+# Green
+set $green   "#9ece6a"
+# Red
+set $red     "#f7768e"
+# Yellow
+set $yellow  "#e0af68"
+# Border
+set $border  "#414868"
+# Urgent (purple)
+set $urgent  "#bb9af7"
 
-# Touchpad settings (apply to all touchpads)
-input "type:touchpad" {
-    natural_scroll enabled
+### Font
+font pango:JetBrainsMono Nerd Font 10
+
+### Input Configuration
+input type:touchpad {
     tap enabled
-    tap_button_map lrm   # left-right-middle emulation
-    accel_profile adaptive
+    natural_scroll disabled
+    dwt enabled
 }
 
-# Mouse acceleration profile
-input "type:pointer" {
-    accel_profile flat
+
+input * xkb_layout br
+
+### Output Configuration
+# Replace eDP-1 with your actual output name from `swaymsg -t get_outputs`
+output eDP-1 {
+    #bg fill
+    mode 1920x1080@60Hz
 }
 
-# Cursor theme
-seat seat0 xcursor_theme Breeze-Dark 24
+### Gaps and Borders
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 5
+gaps outer 5
+smart_gaps off
+smart_borders on
 
-# --- Appearance ---
-# Background color (solid TokyoNight)
-output * bg #1a1b26 solid_color
+### Window Colors (Tokyo Night)
+client.focused          $accent $accent $bg $accent $green
+client.focused_inactive $border $border $fg $border $border
+client.unfocused        $border $border $fg $border $border
+client.urgent           $urgent $urgent $bg $urgent $urgent
+client.placeholder      $border $border $fg $border $border
+client.background       $bg
 
-# Border colors (TokyoNight)
-# class       border  background  text    indicator
-client.focused          #7aa2f7 #7aa2f7 #c0caf5 #7aa2f7
-client.unfocused        #414868 #414868 #c0caf5 #414868
-client.urgent           #f7768e #f7768e #c0caf5 #f7768e
-client.focused_inactive #414868 #414868 #c0caf5 #414868
+### Floating Window Rules
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [app_id="floating"] floating enable
+for_window [title="Library"] floating enable   # Example for Bitwarden
 
-# Border width
-border 2
+### Startup Programs
+exec swaync # Notification daemon
+exec swaybg -i /home/thiago/Pictures/Wallpapers/wallpaper.png -m fill   # Wallpaper
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1   # Polkit agent
+exec waybar             # Waybar status bar
 
-# Gaps (like rivertile padding)
-gaps inner 6
-gaps outer 6
-smart_gaps on
+### Key Bindings
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
 
-# --- Keybindings ---
-set $mod Mod4   # Super key
+bindsym $mod+Shift+n exec swaync-client -t
 
-# Terminal
-bindsym $mod+Shift+Return exec ghostty +new-window
+# Focus movement
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
-# Close focused window
-bindsym $mod+q kill
+# Move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
-# Application shortcuts
-bindsym $mod+w exec firefox
-bindsym $mod+e exec nemo
-bindsym $mod+r exec fuzzel
+# Split containers
+bindsym $mod+s split h
+bindsym $mod+v split v
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
 
-# Exit Sway
-bindsym $mod+Shift+e exit
+# Fullscreen and floating
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
 
-# Wallpaper changer service (adjust as needed)
-bindsym $mod+Shift+p exec systemctl --user start change-wallpaper.service
+# Focus parent/child
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
 
-# Lock screen
-bindsym $mod+Shift+l exec waylock
+# Workspace switching
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Reload config
 bindsym $mod+Shift+c reload
 
-# Screenshots
-bindsym Print exec grim - | wl-copy && notify-send -a "Screenshot" "Fullscreen screenshot copied to clipboard"
-bindsym $mod+Print exec grim -g "$(slurp)" - | wl-copy && notify-send -a "Screenshot" "Selection copied to clipboard"
-bindsym $mod+Shift+Print exec grim -g "$(slurp)" "$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png" && notify-send -a "Screenshot" "Selection saved to Pictures/Screenshots"
+# Exit sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes' 'swaymsg exit'
 
-# Volume control (PipeWire)
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d" " -f2 | sed "s/\.//") && notify-send -a "Volume" "🔊 ${volume}%" -h int:value:$volume
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d" " -f2 | sed "s/\.//") && notify-send -a "Volume" "🔊 ${volume}%" -h int:value:$volume
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED; then notify-send -a "Volume" "🔇 Muted"; else volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d" " -f2 | sed "s/\.//") && notify-send -a "Volume" "🔊 ${volume}%" -h int:value:$volume; fi
+### Application Shortcuts
+# Terminal (Ghostty)
+bindsym $mod+Return exec ghostty
 
-# Media controls
-bindsym XF86AudioMedia exec playerctl play-pause && notify-send -a "Media" "$(playerctl metadata --format "{{status}}")" -h string:x-canonical-private-synchronous:media
-bindsym XF86AudioPlay exec playerctl play-pause && notify-send -a "Media" "$(playerctl metadata --format "{{status}}")"
-bindsym XF86AudioPrev exec playerctl previous && notify-send -a "Media" "Previous track"
-bindsym XF86AudioNext exec playerctl next && notify-send -a "Media" "Next track"
+# Application Launcher (Fuzzel)
+bindsym $mod+d exec fuzzel
 
-# Brightness control
-bindsym XF86MonBrightnessUp exec brightnessctl set +5% && current=$(brightnessctl -m | cut -d, -f4 | tr -d "%") && notify-send -a "Brightness" "$current%" -h int:value:$current
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && current=$(brightnessctl -m | cut -d, -f4 | tr -d "%") && notify-send -a "Brightness" "$current%" -h int:value:$current
+# Screenshot (Grim + Slurp + wl-copy)
+bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Print exec grim - | wl-copy
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png
 
-# Dunst notification controls
-bindsym $mod+Shift+d exec dunstctl close
-bindsym $mod+Ctrl+d exec dunstctl close-all
-bindsym $mod+Alt+d exec dunstctl context
-bindsym $mod+Shift+n exec notify-send -t 5000 "Test Notification" "This is a test notification"
+### Media and System Controls
+# Volume (wpctl)
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-# Focus movement (directional)
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# Media Playback (playerctl)
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-# Move windows
-bindsym $mod+Shift+h move left 100px
-bindsym $mod+Shift+j move down 100px
-bindsym $mod+Shift+k move up 100px
-bindsym $mod+Shift+l move right 100px
+# Brightness (brightnessctl)
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
-# Resize windows
-bindsym $mod+Ctrl+h resize shrink width 100px
-bindsym $mod+Ctrl+j resize grow height 100px
-bindsym $mod+Ctrl+k resize shrink height 100px
-bindsym $mod+Ctrl+l resize grow width 100px
-
-# Alternative resize (with Shift for opposite direction)
-bindsym $mod+Ctrl+Shift+h resize grow width 100px
-bindsym $mod+Ctrl+Shift+j resize shrink height 100px
-bindsym $mod+Ctrl+Shift+k resize grow height 100px
-bindsym $mod+Ctrl+Shift+l resize shrink width 100px
-
-# Output (monitor) focus
-bindsym $mod+period focus output next
-bindsym $mod+comma focus output prev
-bindsym $mod+Shift+period move container to output next
-bindsym $mod+Shift+comma move container to output prev
-
-# Layout orientation (change split direction)
-bindsym $mod+Up split vertical
-bindsym $mod+Down split horizontal
-bindsym $mod+Left layout toggle split
-bindsym $mod+Right layout toggle split
-
-# Toggle floating / fullscreen
-bindsym $mod+space floating toggle
-bindsym $mod+f fullscreen toggle
-
-# Mouse bindings for floating windows
-bindsym --whole-window $mod+button1 move
-bindsym --whole-window $mod+button3 resize
-bindsym --whole-window $mod+button2 floating toggle
-
-# Workspace switching (tags 1-9)
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-
-# Workspace back-and-forth (like river's tag 0)
-bindsym $mod+0 workspace back_and_forth
-
-# Passthrough mode (simplified - use mode for key unbinding if needed)
-# For now, just bind F11 to toggle a mode; this is optional
-mode "passthrough" {
-    bindsym F11 mode "default"
-}
-bindsym $mod+F11 mode "passthrough"
-
-# --- Window Rules ---
-# Float specific applications
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="blueman-manager"] floating enable
-for_window [title="File Operation Progress"] floating enable
-for_window [title=".*Save As.*"] floating enable
-for_window [title=".*Open File.*"] floating enable
-
-# Assign applications to workspaces (like tags)
-for_window [app_id="firefox"] move to workspace $ws1
-for_window [title="YouTube Music"] move to workspace $ws9
-for_window [app_id="nemo"] move to workspace $ws3
-
-# --- Startup ---
-exec_always notify-send -t 2000 "Sway" "Compositor initialized successfully"
+### Misc includes
+include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
