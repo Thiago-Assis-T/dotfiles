@@ -74,7 +74,7 @@ for_window [title="Library"] floating enable   # Example for Bitwarden
 exec swaync # Notification daemon
 exec swaybg -i /home/thiago/Pictures/Wallpapers/wallpaper.png -m fill   # Wallpaper
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1   # Polkit agent
-exec waybar             # Waybar status bar
+exec systemctl --user start waybar             # Waybar status bar
 
 ### Key Bindings
 set $mod Mod4
