@@ -189,7 +189,7 @@
     "interval": 5,
     "max-length": 15,
     "tooltip": true,
-    "on-click": "wezterm start -- btop"
+    "on-click": "wezterm -e btop"
   },
   
   "memory": {
@@ -197,7 +197,7 @@
     "interval": 5,
     "max-length": 15,
     "tooltip": true,
-    "on-click": "wezterm start -- btop"
+    "on-click": "ghostty -e btop"
   },
   
   "tray": {
