@@ -3,7 +3,7 @@
   "layer": "top",
   "position": "top",
   "height": 28,
-  "modules-left": ["custom/launcher", "river/tags", "river/window"],
+  "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
   "modules-center": ["clock"],
   "modules-right": [
     "mpris",
@@ -24,24 +24,23 @@
     "on-click": "fuzzel" 
   },
   
-  "river/tags": {
-    "num-tags": 9,
-    "tag-labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "0": "",
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": ""
+      "default": "",
+      "focused": "",
+      "visible": "",
+      "urgent": ""
     },
-    "on-click": "riverctl set-focused-tags",
-    "on-click-right": "riverctl toggle-focused-tags",  // Changed from middle to right click
-    "on-scroll-up": "riverctl focus-previous-tags",
-    "on-scroll-down": "riverctl focus-next-tags"
+    "on-click": "activate",
+    "on-click-right": "move",
+    "on-scroll-up": "workspace prev_on_output",
+    "on-scroll-down": "workspace next_on_output"
   },
   
-  "river/window": {
+  "sway/window": {
     "format": "{}",
     "max-length": 40
   },

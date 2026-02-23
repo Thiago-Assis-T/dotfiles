@@ -29,12 +29,12 @@ tooltip label {
   color: #c0caf5;
 }
 
-/* River Tags (Workspaces) */
-#tags {
+/* Sway Workspaces (replaces River Tags) */
+#workspaces {
   margin: 0 4px;
 }
 
-#tags button {
+#workspaces button {
   color: #565f89;
   padding: 4px 8px;
   margin: 1px;
@@ -43,22 +43,22 @@ tooltip label {
   transition: all 0.2s ease;
 }
 
-#tags button.focused {
+#workspaces button.focused {
   color: #7aa2f7;
   background: rgba(122, 162, 247, 0.25);
 }
 
-#tags button.occupied {
+#workspaces button.visible {
   color: #c0caf5;
   background: rgba(36, 40, 59, 0.4);
 }
 
-#tags button.urgent {
+#workspaces button.urgent {
   color: #f7768e;
   background: rgba(247, 118, 142, 0.2);
 }
 
-#tags button:hover {
+#workspaces button:hover {
   background: rgba(122, 162, 247, 0.3);
   color: #c0caf5;
 }
