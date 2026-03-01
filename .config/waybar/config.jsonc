@@ -19,9 +19,9 @@
   ],
   
   "custom/launcher": {
-    "format": "󰣇 ",
+    "format": " ",
     "tooltip": false,
-    "on-click": "fuzzel" 
+    "on-click": "wmenu-run" 
   },
   
   "sway/workspaces": {

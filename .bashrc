@@ -18,4 +18,4 @@ fi
 alias ls='ls --color'
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
-
+alias wmenu-run='wmenu-run -N 1a1b26 -n c0caf5 -M 7aa2f7 -m 1a1b26 -S 28344a -s c0caf5'

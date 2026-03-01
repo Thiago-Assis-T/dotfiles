@@ -136,7 +136,7 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # Shortcurs
-bindsym $mod+w exec firefox
+bindsym $mod+w exec firefox-esr
 bindsym $mod+e exec nemo
 
 # Reload config
@@ -150,10 +150,10 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway
 
 ### Application Shortcuts
 # Terminal (Ghostty)
-bindsym $mod+Shift+Return exec ghostty
+bindsym $mod+Shift+Return exec foot
 
 # Application Launcher (Fuzzel)
-bindsym $mod+d exec fuzzel
+bindsym $mod+d exec wmenu-run
 
 # Screenshot (Grim + Slurp + wl-copy)
 bindsym --release Print exec grim -g "$(slurp)" - | wl-copy
@@ -175,6 +175,37 @@ bindsym XF86AudioPrev exec playerctl previous
 # Brightness (brightnessctl)
 bindsym XF86MonBrightnessUp exec brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+
+# Bar configuration with i3status
+#bar {
+#    position top
+#    height 0
+#    gaps 4 4 4 4
+#
+#    font pango:JetBrainsMono Nerd Font 13
+#    status_command i3status
+#
+#    # Colors – Tokyo Night theme
+#    colors {
+#        background #1a1b26
+#        statusline #c0caf5
+#        separator #414868
+#
+#        focused_background #1a1b26
+#        focused_statusline #c0caf5
+#        focused_separator #7aa2f7
+#
+#        # Workspace buttons: border, background, text
+#        focused_workspace #7aa2f7 #1a1b26 #1a1b26
+#        active_workspace   #414868 #1a1b26 #c0caf5
+#        inactive_workspace #414868 #1a1b26 #565f89
+#        urgent_workspace   #bb9af7 #1a1b26 #1a1b26
+#        binding_mode       #bb9af7 #1a1b26 #1a1b26
+#    }
+#
+#    tray_output primary
+#    tray_padding 2
+#}
 
 ### Misc includes
 include /etc/sway/config.d/*
